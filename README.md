@@ -59,13 +59,9 @@ A full-stack platform where students can share and discover study resources for 
    ```env
    MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/examprepshare
    JWT_SECRET=your_super_secret_jwt_key_here
-   FIREBASE_PROJECT_ID=your-firebase-project-id
-   FIREBASE_PRIVATE_KEY_ID=your-private-key-id
-   FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nYOUR_PRIVATE_KEY_HERE\n-----END PRIVATE KEY-----\n"
-   FIREBASE_CLIENT_EMAIL=firebase-adminsdk-xxxxx@your-project.iam.gserviceaccount.com
-   FIREBASE_CLIENT_ID=your-client-id
-   FIREBASE_AUTH_URI=https://accounts.google.com/o/oauth2/auth
-   FIREBASE_TOKEN_URI=https://oauth2.googleapis.com/token
+  CLOUDINARY_CLOUD_NAME=Cloud name
+    CLOUDINARY_API_KEY=api key
+    CLOUDINARY_API_SECRET=secret key
    PORT=5000
    NODE_ENV=development
    ```
