@@ -12,10 +12,9 @@ connectDB();
 const app = express();
 
 // Middleware
+// Temporary CORS fix - allow all origins for testing
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://examprepshare.vercel.app', 'https://examprepshare-frontend.vercel.app', 'https://examprepshare-axk2.vercel.app'] 
-    : ['http://localhost:3000', 'http://localhost:5173'],
+  origin: true,
   credentials: true
 }));
 app.use(express.json({ limit: '50mb' }));
