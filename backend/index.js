@@ -12,9 +12,11 @@ connectDB();
 const app = express();
 
 // Middleware
-// Temporary CORS fix - allow all origins for testing
+// CORS configuration
 app.use(cors({
-  origin: true,
+  origin: '*', // Allow all origins temporarily
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 app.use(express.json({ limit: '50mb' }));

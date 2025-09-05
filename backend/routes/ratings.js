@@ -1,5 +1,6 @@
 const express = require('express');
 const { body, validationResult } = require('express-validator');
+const mongoose = require('mongoose');
 const Rating = require('../models/Rating');
 const Resource = require('../models/Resource');
 const auth = require('../middleware/auth');
@@ -199,7 +200,7 @@ router.delete('/:ratingId', auth, async (req, res) => {
 router.get('/stats/:resourceId', async (req, res) => {
   try {
     const stats = await Rating.aggregate([
-      { $match: { resource: require('mongoose').Types.ObjectId(req.params.resourceId) } },
+      { $match: { resource: new mongoose.Types.ObjectId(req.params.resourceId) } },
       {
         $group: {
           _id: null,
