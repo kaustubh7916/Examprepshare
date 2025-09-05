@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { debugAPI } from './utils/debug';
 
 // Components
 import Navbar from './components/Navbar';
@@ -44,6 +45,13 @@ const PublicRoute = ({ children }) => {
 };
 
 function AppContent() {
+  useEffect(() => {
+    // Debug API configuration in development
+    if (import.meta.env.DEV) {
+      debugAPI();
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
