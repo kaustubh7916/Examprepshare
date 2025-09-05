@@ -44,6 +44,32 @@ const upload = multer({
 
 // Cloudinary automatically handles file upload and returns URL
 
+// @route   GET /api/resources/test-cloudinary
+// @desc    Test Cloudinary connection
+// @access  Public
+router.get('/test-cloudinary', async (req, res) => {
+  try {
+    // Test Cloudinary configuration
+    const testResult = await cloudinary.api.ping();
+    res.json({
+      message: 'Cloudinary connection successful',
+      cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+      apiKey: process.env.CLOUDINARY_API_KEY ? 'Set' : 'Not set',
+      apiSecret: process.env.CLOUDINARY_API_SECRET ? 'Set' : 'Not set',
+      testResult
+    });
+  } catch (error) {
+    console.error('Cloudinary test error:', error);
+    res.status(500).json({
+      message: 'Cloudinary connection failed',
+      error: error.message,
+      cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+      apiKey: process.env.CLOUDINARY_API_KEY ? 'Set' : 'Not set',
+      apiSecret: process.env.CLOUDINARY_API_SECRET ? 'Set' : 'Not set'
+    });
+  }
+});
+
 // @route   GET /api/resources
 // @desc    Get all resources with filtering
 // @access  Public
